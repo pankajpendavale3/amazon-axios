@@ -1,0 +1,97 @@
+.navbar {
+  height: 70px;
+  background: #131921;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  color: white;
+}
+
+.logo {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.logo span {
+  font-size: 18px;
+}
+
+.search-container {
+  display: flex;
+  width: 55%;
+  height: 42px;
+}
+
+.search-container select {
+  width: 60px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+
+.search {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding-left: 15px;
+  font-size: 15px;
+}
+
+.search-btn {
+  width: 50px;
+  border: none;
+  background: #febd69;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links div {
+  cursor: pointer;
+}
+
+.nav-links small {
+  font-size: 12px;
+}
+
+.nav-links h4 {
+  font-size: 14px;
+}
+
+.cart-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.menu-bar {
+  background: #232f3e;
+  color: white;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+
+  padding-left: 20px;
+}
+
+.menu-bar span {
+  cursor: pointer;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

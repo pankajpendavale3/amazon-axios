@@ -1,0 +1,68 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#eaeded;
+}
+
+.navbar{
+  background:#131921;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+}
+
+.logo{
+  font-size:30px;
+  font-weight:bold;
+}
+
+.search{
+  width:50%;
+  padding:10px;
+  border:none;
+}
+
+.nav-links{
+  display:flex;
+  gap:20px;
+}
+
+.hero img{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:15px;
+  text-align:center;
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card button{
+  margin-top:10px;
+  background:#ffd814;
+  border:none;
+  padding:10px 20px;
+  cursor:pointer;
+}
