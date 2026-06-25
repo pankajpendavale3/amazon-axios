@@ -1,28 +1,32 @@
 pipeline {
     agent any
 
-    stage('Install Dependencies') {
-    steps {
-        sh '''
-        npm cache clean --force
-        npm install --no-audit --no-fund
-        '''
-    }
-}
+    stages {
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                    npm install --no-audit --no-fund
+                '''
+            }
+        }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh '''
+                    npm run build
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
                 sh '''
-                mkdir -p /var/www/html
-                cp -r dist/* /var/www/html/
+                    sudo mkdir -p /var/www/html
+                    sudo cp -r dist/* /var/www/html/
                 '''
             }
         }
+
     }
 }
