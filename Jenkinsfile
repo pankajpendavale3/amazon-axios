@@ -1,13 +1,14 @@
 pipeline {
     agent any
 
-    stages {
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
+    stage('Install Dependencies') {
+    steps {
+        sh '''
+        npm cache clean --force
+        npm install --no-audit --no-fund
+        '''
+    }
+}
 
         stage('Build') {
             steps {
