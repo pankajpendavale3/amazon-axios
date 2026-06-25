@@ -1,9 +1,20 @@
+import { useState } from "react";
+import axios from "axios";
+
 import hero from "../assets/images/amazonpage.png";
+import banner1 from "../assets/images/banner1.png";
+import banner2 from "../assets/images/banner2.png";
+import banner3 from "../assets/images/banner3.png";
 
 import laptop from "../assets/images/images5.jpg";
 import mobile from "../assets/images/Mobile.jpg";
 import watch from "../assets/images/images3.jpg";
 import tv from "../assets/images/SmartTV.webp";
+
+import AquaminderSmartWaterBottle from "../assets/images/bottel.jpg";
+import EyebrowTrimmerForWomen from "../assets/images/Eyebrow.jpg";
+import ElectricScooter from "../assets/images/Scooter.jpg";
+import BoatRockerz from "../assets/images/Bluetooth.jpg";
 
 import cleaning from "../assets/images/cleaning.jpg";
 import bathroom from "../assets/images/bathroom.jpg";
@@ -46,6 +57,25 @@ import beauty3 from "../assets/images/beauty3.jpg";
 import beauty4 from "../assets/images/beauty4.jpg";
 
 function Home({ cartItems, setCartItems }) {
+  const banners = [
+  banner1,
+  banner2,
+  banner3
+];
+
+const [currentBanner, setCurrentBanner] = useState(0);
+
+const nextBanner = () => {
+  setCurrentBanner((prev) =>
+    prev === banners.length - 1 ? 0 : prev + 1
+  );
+};
+
+const prevBanner = () => {
+  setCurrentBanner((prev) =>
+    prev === 0 ? banners.length - 1 : prev - 1
+  );
+};
   const products = [
     {
       id: 1,
@@ -71,120 +101,137 @@ function Home({ cartItems, setCartItems }) {
       price: "₹70,000",
       image: tv,
     },
+    {
+      id: 5,
+      title: "Aquaminder Smart Water Bottle",
+      price: "₹700",
+      image: AquaminderSmartWaterBottle,
+    },
+    {
+      id: 6,
+      title: "Eyebrow Trimmer for Women",
+      price: "₹500",
+      image: EyebrowTrimmerForWomen,
+    },
+    {
+      id: 7,
+      title: "Electric Scooter",
+      price: "₹85,000",
+      image: ElectricScooter,
+    },
+    {
+      id: 8,
+      title: "Boat Rockerz",
+      price: "₹2000",
+      image: BoatRockerz,
+    },
   ];
 
-  const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
+  const addToCart = async (item) => {
+    try {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user) {
+        alert("Please login first");
+        return;
+      }
+
+      const cleanPrice = Number(
+        String(item.price).replace(/[^0-9]/g, "")
+      );
+
+      const resCheck = await axios.get(
+        `http://localhost:5000/api/cart/${user.email}`
+      );
+
+      const alreadyExists = resCheck.data.some(
+        (p) => p.product_name === item.title
+      );
+
+      if (alreadyExists) {
+        alert("Item already in cart");
+        return;
+      }
+
+      await axios.post("http://localhost:5000/api/cart/add", {
+        user_email: user.email,
+        product_name: item.title,
+        price: cleanPrice,
+      });
+
+      setCartItems([...cartItems, item]);
+
+      alert("Added to cart");
+    } catch (error) {
+      console.log(error.response?.data || error.message);
+      alert("Failed to add to cart");
+    }
   };
 
   return (
     <>
-      <div className="hero">
-        <img src={hero} alt="banner" />
-      </div>
+      <div className="hero-slider">
+
+  <button
+    className="slider-btn left-btn"
+    onClick={prevBanner}
+  >
+    ❮
+  </button>
+
+  <img
+    src={banners[currentBanner]}
+    alt="Banner"
+    className="slider-image"
+  />
+
+  <button
+    className="slider-btn right-btn"
+    onClick={nextBanner}
+  >
+    ❯
+  </button>
+
+</div>
 
       <div className="amazon-categories">
         <div className="amazon-card">
           <h2>Starting ₹49 | Deals on home essentials</h2>
-
           <div className="card-grid">
-            <div>
-              <img src={cleaning} alt="" />
-              <p>Cleaning supplies</p>
-            </div>
-
-            <div>
-              <img src={bathroom} alt="" />
-              <p>Bathroom accessories</p>
-            </div>
-
-            <div>
-              <img src={tools} alt="" />
-              <p>Home tools</p>
-            </div>
-
-            <div>
-              <img src={wallpaper} alt="" />
-              <p>Wallpapers</p>
-            </div>
+            <div><img src={cleaning} /><p>Cleaning supplies</p></div>
+            <div><img src={bathroom} /><p>Bathroom accessories</p></div>
+            <div><img src={tools} /><p>Home tools</p></div>
+            <div><img src={wallpaper} /><p>Wallpapers</p></div>
           </div>
         </div>
 
         <div className="amazon-card">
           <h2>Starting ₹199 | Amazon Brands & more</h2>
-
           <div className="card-grid">
-            <div>
-              <img src={bedsheet} alt="" />
-              <p>Bedsheets</p>
-            </div>
-
-            <div>
-              <img src={curtains} alt="" />
-              <p>Curtains</p>
-            </div>
-
-            <div>
-              <img src={ironing} alt="" />
-              <p>Ironing Board</p>
-            </div>
-
-            <div>
-              <img src={decor} alt="" />
-              <p>Home Decor</p>
-            </div>
+            <div><img src={bedsheet} /><p>Bedsheets</p></div>
+            <div><img src={curtains} /><p>Curtains</p></div>
+            <div><img src={ironing} /><p>Ironing Board</p></div>
+            <div><img src={decor} /><p>Home Decor</p></div>
           </div>
         </div>
 
         <div className="amazon-card">
           <h2>Automotive essentials | Up to 60% off</h2>
-
           <div className="card-grid">
-            <div>
-              <img src={cleaningCar} alt="" />
-              <p>Cleaning accessories</p>
-            </div>
-
-            <div>
-              <img src={tyre} alt="" />
-              <p>Tyre care</p>
-            </div>
-
-            <div>
-              <img src={helmet} alt="" />
-              <p>Helmets</p>
-            </div>
-
-            <div>
-              <img src={vacuum} alt="" />
-              <p>Vacuum Cleaner</p>
-            </div>
+            <div><img src={cleaningCar} /><p>Cleaning accessories</p></div>
+            <div><img src={tyre} /><p>Tyre care</p></div>
+            <div><img src={helmet} /><p>Helmets</p></div>
+            <div><img src={vacuum} /><p>Vacuum Cleaner</p></div>
           </div>
         </div>
 
         <div className="amazon-card">
           <h2>Baby care & toys | Up to 50% off</h2>
-
           <div className="card-grid">
-            <div>
-              <img src={diaper} alt="" />
-              <p>Baby Diapers</p>
-            </div>
-
-            <div>
-              <img src={rideon} alt="" />
-              <p>Ride Ons</p>
-            </div>
-
-            <div>
-              <img src={rcCar} alt="" />
-              <p>RC Cars</p>
-            </div>
-
-            <div>
-              <img src={safety} alt="" />
-              <p>Baby Safety</p>
-            </div>
+            <div><img src={diaper} /><p>Baby Diapers</p></div>
+            <div><img src={rideon} /><p>Ride Ons</p></div>
+            <div><img src={rcCar} /><p>RC Cars</p></div>
+            <div><img src={safety} /><p>Baby Safety</p></div>
           </div>
         </div>
       </div>
@@ -202,53 +249,75 @@ function Home({ cartItems, setCartItems }) {
           </div>
         ))}
       </div>
-      {/* SHOPPING SECTION */}
 
-<div className="shopping-section">
+      <div className="shopping-section">
 
+  {/* CARD 1 */}
   <div className="shopping-card">
-    <h2>Keep shopping for</h2>
+    <div className="card-header">
+      <h2>Recently Viewed Products</h2>
+      <span>View All</span>
+    </div>
 
     <div className="shopping-grid">
-      <div>
+      <div className="grid-item">
         <img src={phone1} alt="" />
-        <p>Mobile 1</p>
+        <p>Premium Smartphone</p>
       </div>
 
-      <div>
+      <div className="grid-item">
         <img src={phone2} alt="" />
-        <p>Mobile 2</p>
+        <p>Latest Android</p>
       </div>
 
-      <div>
+      <div className="grid-item">
         <img src={phone3} alt="" />
-        <p>Mobile 3</p>
+        <p>Flagship Mobile</p>
       </div>
 
-      <div>
+      <div className="grid-item">
         <img src={phone4} alt="" />
-        <p>Mobile 4</p>
+        <p>Smart Device</p>
       </div>
     </div>
-
-    <a href="/">See more</a>
   </div>
 
+  {/* CARD 2 */}
   <div className="shopping-card">
-    <h2>Customers' Most-Loved Fashion for you</h2>
+    <div className="card-header">
+      <h2>Trending Fashion Collection</h2>
+      <span>Explore</span>
+    </div>
 
     <div className="shopping-grid">
-      <img src={fashion1} alt="" />
-      <img src={fashion2} alt="" />
-      <img src={shoe1} alt="" />
-      <img src={shoe2} alt="" />
-    </div>
+      <div className="grid-item">
+        <img src={fashion1} alt="" />
+        <p>Winter Collection</p>
+      </div>
 
-    <a href="/">Explore more</a>
+      <div className="grid-item">
+        <img src={fashion2} alt="" />
+        <p>Women's Fashion</p>
+      </div>
+
+      <div className="grid-item">
+        <img src={shoe1} alt="" />
+        <p>Sports Shoes</p>
+      </div>
+
+      <div className="grid-item">
+        <img src={shoe2} alt="" />
+        <p>Running Shoes</p>
+      </div>
+    </div>
   </div>
 
+  {/* CARD 3 */}
   <div className="shopping-card">
-    <h2>Min.30% off | Top selections from Small Businesses</h2>
+    <div className="card-header">
+      <h2>Premium Home & Living</h2>
+      <span>Shop Now</span>
+    </div>
 
     <img
       src={furniture1}
@@ -264,14 +333,33 @@ function Home({ cartItems, setCartItems }) {
     </div>
   </div>
 
+  {/* CARD 4 */}
   <div className="shopping-card">
-    <h2>Best Sellers in Beauty</h2>
+    <div className="card-header">
+      <h2>Beauty Essentials</h2>
+      <span>Best Sellers</span>
+    </div>
 
     <div className="shopping-grid">
-      <img src={beauty1} alt="" />
-      <img src={beauty2} alt="" />
-      <img src={beauty3} alt="" />
-      <img src={beauty4} alt="" />
+      <div className="grid-item">
+        <img src={beauty1} alt="" />
+        <p>Skin Care</p>
+      </div>
+
+      <div className="grid-item">
+        <img src={beauty2} alt="" />
+        <p>Beauty Products</p>
+      </div>
+
+      <div className="grid-item">
+        <img src={beauty3} alt="" />
+        <p>Makeup Kit</p>
+      </div>
+
+      <div className="grid-item">
+        <img src={beauty4} alt="" />
+        <p>Face Care</p>
+      </div>
     </div>
   </div>
 

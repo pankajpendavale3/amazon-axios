@@ -1,78 +1,98 @@
-import {
-  FaBox,
-  FaUndo,
-  FaMapMarkerAlt,
-  FaCrown,
-  FaCreditCard,
-  FaUserCog,
-  FaTabletAlt
-} from "react-icons/fa";
+import { useState } from "react";
+import "./CustomerService.css";
 
 function CustomerService() {
-  const services = [
+  const [search, setSearch] = useState("");
+
+  const categories = [
     {
-      icon: <FaBox />,
       title: "Your Orders",
-      desc1: "Track packages",
-      desc2: "Edit or cancel orders",
+      desc: "Track packages, edit or cancel orders",
+      icon: "📦",
     },
     {
-      icon: <FaUndo />,
-      title: "Returns and Refunds",
-      desc1: "Return or exchange items",
-      desc2: "Print return mailing labels",
+      title: "Returns & Refunds",
+      desc: "Return or exchange items easily",
+      icon: "🔄",
     },
     {
-      icon: <FaMapMarkerAlt />,
       title: "Manage Addresses",
-      desc1: "Update your addresses",
-      desc2: "Add address, landmark details",
+      desc: "Update or add delivery addresses",
+      icon: "📍",
     },
     {
-      icon: <FaCrown />,
-      title: "Manage Prime",
-      desc1: "View your benefits",
-      desc2: "Membership details",
-    },
-    {
-      icon: <FaCreditCard />,
       title: "Payment Settings",
-      desc1: "Add or edit payment methods",
-      desc2: "Change expired debit or credit card",
+      desc: "Add or update payment methods",
+      icon: "💳",
     },
     {
-      icon: <FaUserCog />,
       title: "Account Settings",
-      desc1: "Change your email or password",
-      desc2: "Update login information",
+      desc: "Change email, password & login info",
+      icon: "👤",
     },
     {
-      icon: <FaTabletAlt />,
-      title: "Digital Services and Device Support",
-      desc1: "Find device help and support",
-      desc2: "Troubleshoot device issues",
+      title: "Device Support",
+      desc: "Help with devices & troubleshooting",
+      icon: "📱",
     },
   ];
 
   return (
-    <div className="customer-service-page">
-      <h1>Hello. What can we help you with?</h1>
+    <div className="help-center">
 
-      <h2>Some things you can do here</h2>
+      {/* HEADER */}
+      <div className="help-header">
+        <h1>👋 Hello. How can we help you?</h1>
 
-      <div className="service-grid">
-        {services.map((service, index) => (
-          <div className="service-card" key={index}>
-            <div className="service-icon">
-              {service.icon}
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Search help topics..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button>🔍</button>
+        </div>
+      </div>
+
+      {/* HELP GRID */}
+      <div className="help-grid">
+        {categories
+          .filter((item) =>
+            item.title.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((item, index) => (
+            <div className="help-card" key={index}>
+              <div className="icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
             </div>
+          ))}
+      </div>
 
-            <h3>{service.title}</h3>
+      {/* SUPPORT SECTION */}
+      <div className="support-box">
+        <h2>Still need help?</h2>
+        <p>Our support team is available 24/7</p>
 
-            <p>{service.desc1}</p>
-            <p>{service.desc2}</p>
-          </div>
-        ))}
+        <button className="contact-btn">
+          📞 Contact Support
+        </button>
+      </div>
+
+      {/* CHATBOT UI (SIMPLE FRONTEND) */}
+      <div className="chatbot">
+        <div className="chat-header">🤖 Support Assistant</div>
+
+        <div className="chat-body">
+          <p className="bot">Hi 👋 I’m here to help you!</p>
+          <p className="bot">Ask me anything about orders, returns, payments.</p>
+        </div>
+
+        <div className="chat-input">
+          <input placeholder="Type your message..." />
+          <button>Send</button>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import "./Mobiles.css";
 import mobile1 from "../assets/images/phone1.jpg";
 import mobile2 from "../assets/images/phone2.jpg";
 import mobile3 from "../assets/images/phone3.jpg";

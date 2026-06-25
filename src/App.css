@@ -840,3 +840,173 @@ object-fit: contain;
     grid-template-columns:1fr;
   }
 }
+.hero-slider{
+  position:relative;
+  width:100%;
+  height:500px;
+  overflow:hidden;
+}
+
+.slider-image{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+}
+
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:10;
+  width:60px;
+  height:60px;
+  border:none;
+  background:rgba(255,255,255,.7);
+  font-size:35px;
+  cursor:pointer;
+}
+
+.left-btn{
+  left:15px;
+}
+
+.right-btn{
+  right:15px;
+}
+
+.slider-btn:hover{
+  background:white;
+}
+/* HERO SLIDER */
+
+.hero-slider {
+  width: 98%;
+  height: 450px;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 24px;
+  height: 40px;
+
+  border: none;
+  border-radius: 4px;
+
+  background: transparent;
+  color: #000;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-btn {
+  left: 8px;
+}
+
+.right-btn {
+  right: 8px;
+}
+
+.slider-btn:hover {
+  background: rgba(255,255,255,0.95);
+}
+.shopping-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 25px;
+  background: #eaeded;
+}
+
+.shopping-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.shopping-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.card-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.card-header span {
+  color: #007185;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.shopping-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+
+.grid-item {
+  text-align: center;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.grid-item p {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.main-product {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.thumbs img {
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}

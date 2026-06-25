@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
 
 import OrdersPage from "./pages/OrdersPage";
 import Mobiles from "./pages/Mobiles";
@@ -15,82 +16,64 @@ import ToysGames from "./pages/ToysGames";
 import Bestsellers from "./pages/Bestsellers";
 import CustomerService from "./pages/CustomerService";
 import Sell from "./pages/Sell";
+import BusinessAccount from "./pages/BusinessAccount";
+import Payment from "./pages/Payment";
+
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
   return (
     <BrowserRouter>
+
+      {/* NAVBAR */}
       <Navbar cartItems={cartItems} />
 
+      {/* ROUTES */}
       <Routes>
 
-  <Route
-    path="/"
-    element={
-      <Home
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-      />
-    }
-  />
+        {/* HOME */}
+        <Route
+          path="/"
+          element={
+            <Home
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
+          }
+        />
 
-  <Route
-    path="/cart"
-    element={<Cart cartItems={cartItems} />}
-  />
+        {/* LOGIN (✔ FIXED HERE) */}
+        <Route path="/login" element={<Login />} />
 
-  <Route
-    path="/orders"
-    element={<OrdersPage />}
-  />
+        <Route path="/business" element={<BusinessAccount />} />
 
-  <Route
-    path="/mobiles"
-    element={<Mobiles />}
-  />
+        <Route path="/payment" element={<Payment />} />
 
-  <Route
-    path="/electronics"
-    element={<Electronics />}
-  />
+        {/* CART */}
+        <Route
+          path="/cart"
+          element={<Cart cartItems={cartItems} />}
+        />
 
-  <Route
-    path="/fashion"
-    element={<Fashion />}
-  />
+        {/* ORDERS */}
+        <Route
+          path="/orders"
+          element={<OrdersPage />}
+        />
 
-  <Route
-    path="/home-kitchen"
-    element={<HomeKitchen />}
-  />
+        {/* PAGES */}
+        <Route path="/mobiles" element={<Mobiles />} />
+        <Route path="/electronics" element={<Electronics />} />
+        <Route path="/fashion" element={<Fashion />} />
+        <Route path="/home-kitchen" element={<HomeKitchen />} />
+        <Route path="/computers" element={<Computers />} />
+        <Route path="/toys-games" element={<ToysGames />} />
+        <Route path="/bestsellers" element={<Bestsellers />} />
+        <Route path="/customer-service" element={<CustomerService />} />
+        <Route path="/sell" element={<Sell />} />
 
-  <Route
-    path="/computers"
-    element={<Computers />}
-  />
-
-  <Route
-  path="/toys-games"
-  element={<ToysGames />}
-/>
-
-<Route
-  path="/bestsellers"
-  element={<Bestsellers />}
-/>
-
-<Route
-  path="/customer-service"
-  element={<CustomerService />}
-/>
-
-<Route
-  path="/sell"
-  element={<Sell />}
-/>
-
-</Routes>
+      </Routes>
 
     </BrowserRouter>
   );
