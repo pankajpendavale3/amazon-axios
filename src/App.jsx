@@ -6,18 +6,18 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 
-import OrdersPage from "./pages/OrdersPage";
-import Mobiles from "./pages/Mobiles";
-import Electronics from "./pages/Electronics";
-import Fashion from "./pages/Fashion";
-import HomeKitchen from "./pages/HomeKitchen";
-import Computers from "./pages/Computers";
-import ToysGames from "./pages/ToysGames";
-import Bestsellers from "./pages/Bestsellers";
-import CustomerService from "./pages/CustomerService";
-import Sell from "./pages/Sell";
-import BusinessAccount from "./pages/BusinessAccount";
-import Payment from "./pages/Payment";
+import OrdersPage from "./Pages/OrdersPage";
+import Mobiles from "./Pages/Mobiles";
+import Electronics from "./Pages/Electronics";
+import Fashion from "./Pages/Fashion";
+import HomeKitchen from "./Pages/HomeKitchen";
+import Computers from "./Pages/Computers";
+import ToysGames from "./Pages/ToysGames";
+import Bestsellers from "./Pages/Bestsellers";
+import CustomerService from "./Pages/CustomerService";
+import Sell from "./Pages/Sell";
+import BusinessAccount from "./Pages/BusinessAccount";
+import Payment from "./Pages/Payment";
 
 
 function App() {
