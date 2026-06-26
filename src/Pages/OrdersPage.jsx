@@ -1,5 +1,5 @@
 import { useState } from "react";
-import bgImage from "../assets/images/amazonOrder.jpg";
+import amazonOrder from "../assets/images/amazonOrder.jpg";
 
 function OrdersPage() {
   const [value, setValue] = useState("");
