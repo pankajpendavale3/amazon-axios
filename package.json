@@ -17,27 +17,27 @@
     "react-router-dom": "^7.17.0"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.2",
-    "eslint": "^10.3.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.6.0",
-    "vite": "^8.0.12"
-  },
+  "@eslint/js": "^10.0.1",
+  "@types/react": "^19.2.14",
+  "@types/react-dom": "^19.2.3",
+  "@vitejs/plugin-react": "^5.1.0",
+  "eslint": "^10.3.0",
+  "eslint-plugin-react-hooks": "^7.1.1",
+  "eslint-plugin-react-refresh": "^0.5.2",
+  "globals": "^17.6.0",
+  "vite": "7.1.5"
+},
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "eslint.config.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pankajpendavale3/pankaj_website.git"
-  },
+  "type": "git",
+  "url": "https://github.com/pankajpendavale3/amazon-axios.git"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pankajpendavale3/pankaj_website/issues"
-  },
-  "homepage": "https://github.com/pankajpendavale3/pankaj_website#readme"
+  "url": "https://github.com/pankajpendavale3/amazon-axios/issues"
+},
+"homepage": "https://github.com/pankajpendavale3/amazon-axios#readme"
 }
