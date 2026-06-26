@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 sh '''
@@ -22,11 +28,21 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    sudo mkdir -p /var/www/html
-                    sudo cp -r dist/* /var/www/html/
+                    sudo rm -rf /usr/share/nginx/html/*
+                    sudo cp -r dist/* /usr/share/nginx/html/
+                    sudo systemctl restart nginx
                 '''
             }
         }
 
+    }
+
+    post {
+        success {
+            echo 'Application deployed successfully!'
+        }
+        failure {
+            echo 'Deployment failed!'
+        }
     }
 }
