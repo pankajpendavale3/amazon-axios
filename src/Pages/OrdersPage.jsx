@@ -12,7 +12,7 @@ function OrdersPage() {
         justifyContent: "center",
         alignItems: "center",
         fontFamily: "Arial",
-        backgroundImage: `url(${bgImage})`,
+        backgroundImage: `url(${amazonOrder})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
